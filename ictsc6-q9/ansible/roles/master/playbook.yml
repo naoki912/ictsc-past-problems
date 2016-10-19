@@ -1,0 +1,29 @@
+---
+- name: ICTSC6 Q9 master
+  hosts: master
+  become: True
+  tasks:
+
+    - name: copy my.cnf file
+      copy: >
+          src=my.cnf dest=/etc/my.cnf
+          owner=root mode=0644
+          seuser=system_u serole=object_r setype=mysqld_etc_t selevel=s0
+
+    - name: restart MySQL
+      service: name=mysqld state=restarted
+
+    - name: add repl user
+      mysql_user: >
+          login_user=root
+          login_password=root
+          name=repl
+          password=repl
+          priv="*.*:REPLICATION SLAVE"
+          host="192.168.5.%"
+
+    - name: insert user record
+      shell: /usr/bin/mysql --user=root --password=root -e "INSERT INTO ictsc.user (id, name) VALUES (3, 'ictsc6666666666666666666666666666');"
+
+    - name: restart mysqld
+      service: name=mysqld state=restarted
