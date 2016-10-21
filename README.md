@@ -12,6 +12,7 @@ KVMを使いたい場合や実サーバに構築したい場合はAnsible playbo
 
 そのうち増えます(ICTSC6のサーバ系問題から作成していく予定)
 
+* ICTSC6-Q4-アップローダが動きません!([作成中](https://github.com/acque2two/ictsc-past-questions))
 * ICTSC6-Q7-自動マウントをしてくれない!(次に作成予定)
 * [ICTSC6-Q9-レプリケーションが出来ない!](ictsc6-q9)
 
